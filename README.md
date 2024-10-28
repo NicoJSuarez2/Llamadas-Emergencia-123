@@ -1,5 +1,7 @@
 # Llamadas-Emergencia-123
 
+Para abrir el tablero en powerbi necesitas clonar este repositorio en tu computador y abrir el archivo Bogota-llamadas123.pbip
+
 ![Diapositiva](images/1.jpg)
 ![Diapositiva](images/2.jpg)
 ![Diapositiva](images/3.jpg)
