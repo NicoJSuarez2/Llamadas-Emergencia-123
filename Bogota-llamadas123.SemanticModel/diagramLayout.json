@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 43.9957260080605
+          },
+          "nodeIndex": "Descripcion_Incidene",
+          "nodeLineageTag": "3c5a03c2-9905-4ef5-a627-3e28fcfac04b",
+          "size": {
+            "height": 174.62637337557396,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 580.0451789401078,
+            "y": 160.06375797666078
+          },
+          "nodeIndex": "UPZ2",
+          "nodeLineageTag": "3cd97327-3d21-4e1a-bb68-dd870d7457ac",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 300.42795759789891,
+            "y": 0
+          },
+          "nodeIndex": "Limpios",
+          "nodeLineageTag": "3c0cf59c-1862-4dcf-be06-eac7de1d3d42",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1069.8693412211019,
+            "y": 16.341269660136753
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "328f596f-e562-4914-99f6-479a8f2352e4",
+          "size": {
+            "height": 230.9590950518317,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 859.80218827181068,
+            "y": 315.32796970835938
+          },
+          "nodeIndex": "NuevoRegistro",
+          "nodeLineageTag": "6bae3ed3-51ba-43e0-b932-d7c415d59d75",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 283.93626659379839
+          },
+          "nodeIndex": "Suma de CANT_INCIDENTES por Año y Trimestre",
+          "nodeLineageTag": "f8b8a4ae-becb-4b00-9b9b-c653412d186d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 79.5531820376998,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

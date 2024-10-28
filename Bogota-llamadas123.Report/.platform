@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Bogota-llamadas123"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8ce22920-6b4f-41b4-b7b8-9071e162b814"
+  }
+}
