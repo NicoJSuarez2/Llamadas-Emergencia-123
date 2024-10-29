@@ -320,6 +320,15 @@
           "z": 1000.00
         },
         {
+          "config": "{\"name\":\"99992c60ab3c94db99b7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":222.10242587601078,\"y\":362.2641509433962,\"z\":15001,\"width\":987.6010781671159,\"height\":274.93261455525607,\"tabOrder\":15001}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"PRUEBA DE MOFDIFICACION\",\"textStyle\":{\"fontSize\":\"40pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 274.93,
+          "width": 987.60,
+          "x": 222.10,
+          "y": 362.26,
+          "z": 15001.00
+        },
+        {
           "config": "{\"name\":\"a9da35a78ca5135fb8ef\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":402.146968534152,\"z\":10000,\"width\":221.66666666666669,\"height\":70,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Limpios.ANIO\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"Limpios\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"ANIO\"},\"Name\":\"Limpios.ANIO\",\"NativeReferenceName\":\"ANIO\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"selection\":[{\"properties\":{\"singleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"strictSingleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.6}}}}},\"padding\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Año'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"11D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.6}}}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}],\"lockAspect\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
           "filters": "[]",
           "height": 70.00,

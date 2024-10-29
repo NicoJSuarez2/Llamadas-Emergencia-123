@@ -1,0 +1,910 @@
+{
+  "version": "1.0",
+  "conceptualSchemaSettings": {},
+  "queries": [
+    {
+      "name": "Archivo de ejemplo",
+      "lineageTag": "2c5797d8-2470-4217-bd40-c43bba60cfa8",
+      "queryGroupId": "96539aca-06c3-40ac-9581-0ec45d8a0cd3",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),",
+        "    Navegación1 = #\"Se expandió Attributes\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro1",
+      "lineageTag": "69f9b0f5-979b-43ff-b19d-992cea327d51",
+      "queryGroupId": "96539aca-06c3-40ac-9581-0ec45d8a0cd3",
+      "text": [
+        "#\"Archivo de ejemplo\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo",
+      "lineageTag": "97ac13d8-9e1e-42eb-8765-c843c96c1133",
+      "queryGroupId": "a218dfe6-ad67-43ed-a93f-e5ed6c4e38ea",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo",
+      "lineageTag": "45be0c39-47fb-4588-b30a-6b0d9bdd2446",
+      "queryGroupId": "96539aca-06c3-40ac-9581-0ec45d8a0cd3",
+      "text": [
+        "let",
+        "    Origen = (Parámetro1 as binary) => let",
+        "        Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
+        "    in",
+        "        Origen",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (2)",
+      "lineageTag": "2802d06d-bcf8-444b-ab03-e44bcfd449a3",
+      "queryGroupId": "0841c52d-e68c-493c-98a3-e00cc3cc52ce",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Se expandió Attributes\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo\", each #\"Transformar archivo\"([Content])),",
+        "    #\"Filas filtradas\" = Table.SelectRows(#\"Invocar función personalizada1\", each ([Name] = \"definicioncampos.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro2",
+      "lineageTag": "1c7bd9d1-5847-4c40-bb47-db359fd7fe94",
+      "queryGroupId": "0841c52d-e68c-493c-98a3-e00cc3cc52ce",
+      "text": [
+        "#\"Archivo de ejemplo (2)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (2)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (2)",
+      "lineageTag": "fafa829b-ef2a-4a25-ab4a-fab1db716dbb",
+      "queryGroupId": "67dfa5dc-4024-4513-ae26-e6d854cffa5c",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (2)",
+      "lineageTag": "881225f9-f632-41c8-8c7d-5e00ef1ab4f7",
+      "queryGroupId": "0841c52d-e68c-493c-98a3-e00cc3cc52ce",
+      "text": [
+        "let",
+        "    Origen = (Parámetro2 as binary) => let",
+        "        Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])",
+        "    in",
+        "        Origen",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Descripcion_Incidene",
+      "lineageTag": "3c5a03c2-9905-4ef5-a627-3e28fcfac04b",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (3)\", each #\"Transformar archivo (3)\"([Content])),",
+        "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
+        "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (3)\"}),",
+        "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (3)\", Table.ColumnNames(#\"Transformar archivo (3)\"(#\"Archivo de ejemplo (3)\"))),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}}),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(#\"Tipo cambiado\", [PromoteAllScalars=true]),",
+        "    #\"Tipo cambiado1\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"guiatipificacionincidentes.csv\", type text}, {\"COD_INCIDENTE\", type text}, {\"INCIDENTE\", type text}, {\"DEFINICION\", type text}}),",
+        "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado1\",{\"guiatipificacionincidentes.csv\"}),",
+        "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Columnas quitadas\",{{\"INCIDENTE\", Text.Proper, type text}})",
+        "in",
+        "    #\"Poner En Mayúsculas Cada Palabra\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = SharePoint.Files(\\\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\\\", [ApiVersion = 15]),\\r\\n    #\\\"Filas filtradas\\\" = Table.SelectRows(Origen, each ([Name] = \\\"guiatipificacionincidentes.csv\\\")),\\r\\n    #\\\"Archivos ocultos filtrados1\\\" = Table.SelectRows(#\\\"Filas filtradas\\\", each [Attributes]?[Hidden]? <> true),\\r\\n    #\\\"Invocar función personalizada1\\\" = Table.AddColumn(#\\\"Archivos ocultos filtrados1\\\", \\\"Transformar archivo (3)\\\", each #\\\"Transformar archivo (3)\\\"([Content])),\\r\\n    #\\\"Columnas con nombre cambiado1\\\" = Table.RenameColumns(#\\\"Invocar función personalizada1\\\", {\\\"Name\\\", \\\"Source.Name\\\"}),\\r\\n    #\\\"Otras columnas quitadas1\\\" = Table.SelectColumns(#\\\"Columnas con nombre cambiado1\\\", {\\\"Source.Name\\\", \\\"Transformar archivo (3)\\\"}),\\r\\n    #\\\"Columna de tabla expandida1\\\" = Table.ExpandTableColumn(#\\\"Otras columnas quitadas1\\\", \\\"Transformar archivo (3)\\\", Table.ColumnNames(#\\\"Transformar archivo (3)\\\"(#\\\"Archivo de ejemplo (3)\\\"))),\\r\\n    #\\\"Tipo cambiado\\\" = Table.TransformColumnTypes(#\\\"Columna de tabla expandida1\\\",{{\\\"Source.Name\\\", type text}, {\\\"Column1\\\", type text}, {\\\"Column2\\\", type text}, {\\\"Column3\\\", type text}}),\\r\\n    #\\\"Encabezados promovidos\\\" = Table.PromoteHeaders(#\\\"Tipo cambiado\\\", [PromoteAllScalars=true]),\\r\\n    #\\\"Tipo cambiado1\\\" = Table.TransformColumnTypes(#\\\"Encabezados promovidos\\\",{{\\\"guiatipificacionincidentes.csv\\\", type text}, {\\\"COD_INCIDENTE\\\", type text}, {\\\"INCIDENTE\\\", type text}, {\\\"DEFINICION\\\", type text}}),\\r\\n    #\\\"Columnas quitadas\\\" = Table.RemoveColumns(#\\\"Tipo cambiado1\\\",{\\\"guiatipificacionincidentes.csv\\\"}),\\r\\n    #\\\"Poner En Mayúsculas Cada Palabra\\\" = Table.TransformColumns(#\\\"Columnas quitadas\\\",{{\\\"INCIDENTE\\\", Text.Proper, type text}})\\r\\nin\\r\\n    #\\\"Poner En Mayúsculas Cada Palabra\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (3)",
+      "lineageTag": "6711bd28-b65a-4eba-a920-174e8a986b2f",
+      "queryGroupId": "6cf1fdc0-200a-4d8c-9062-746e17719880",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Exception",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro3",
+      "lineageTag": "e093d990-14f6-4d11-9add-e217d3819117",
+      "queryGroupId": "6cf1fdc0-200a-4d8c-9062-746e17719880",
+      "text": [
+        "#\"Archivo de ejemplo (3)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (3)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (3)",
+      "lineageTag": "ad853ce1-5be4-470a-9d58-912c668b8034",
+      "queryGroupId": "fb89f656-5946-4b70-ae28-b8cd9b22f1b2",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (3)",
+      "lineageTag": "15cb98bb-0d00-49f2-bb81-66f0f9e2dc48",
+      "queryGroupId": "6cf1fdc0-200a-4d8c-9062-746e17719880",
+      "text": [
+        "let",
+        "    Origen = (Parámetro3 as binary) => let",
+        "        Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
+        "    in",
+        "        Origen",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Consulta3",
+      "lineageTag": "babe9283-ed3a-4600-b2c0-f31985d016bf",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (4)\", each #\"Transformar archivo (4)\"([Content])),",
+        "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
+        "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (4)\"}),",
+        "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (4)\", Table.ColumnNames(#\"Transformar archivo (4)\"(#\"Archivo de ejemplo (4)\"))),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"ID\", type text}, {\"ANIO\", Int64.Type}, {\"MES\", Int64.Type}, {\"TIPO_INCIDENTE\", type text}, {\"TIPO_DETALLE\", type text}, {\"COD_LOCALIDAD\", Int64.Type}, {\"LOCALIDAD\", type text}, {\"COD_UPZ\", type text}, {\"UPZ\", type text}, {\"CANT_INCIDENTES\", Int64.Type}}),",
+        "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"})",
+        "in",
+        "    #\"Columnas quitadas\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (4)",
+      "lineageTag": "a382e581-f590-4872-a7ab-da8fd170e4ac",
+      "queryGroupId": "5f940921-c794-4f9b-aae1-336d69f16e42",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro4",
+      "lineageTag": "df154d0b-0ac7-49e0-bba5-3d37fee5aaee",
+      "queryGroupId": "5f940921-c794-4f9b-aae1-336d69f16e42",
+      "text": [
+        "#\"Archivo de ejemplo (4)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (4)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (4)",
+      "lineageTag": "8362a9f8-8602-4055-8d92-7a76fad278cb",
+      "queryGroupId": "859e584e-d2a3-4a91-a99a-a24e09079e39",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (4)",
+      "lineageTag": "701db3c1-8edf-47a4-87ac-725f11d006a8",
+      "queryGroupId": "5f940921-c794-4f9b-aae1-336d69f16e42",
+      "text": [
+        "let",
+        "    Origen = (Parámetro4 as binary) => let",
+        "        Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (5)",
+      "lineageTag": "a28e6b5e-1967-4ee5-a713-63c55a0723c3",
+      "queryGroupId": "dc0af7dc-8b7f-414c-a5f9-d133f9bcc4e9",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro5",
+      "lineageTag": "c760b3b1-d50e-4032-bfb2-82823ef02b52",
+      "queryGroupId": "dc0af7dc-8b7f-414c-a5f9-d133f9bcc4e9",
+      "text": [
+        "#\"Archivo de ejemplo (5)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (5)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (5)",
+      "lineageTag": "08dd268d-27e7-4b72-b8ce-d106d4838b3e",
+      "queryGroupId": "bb0e33eb-14dc-43d0-a7be-d547e538b93d",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (5)",
+      "lineageTag": "67c18d7d-741a-412e-ba47-b5aca383106e",
+      "queryGroupId": "dc0af7dc-8b7f-414c-a5f9-d133f9bcc4e9",
+      "text": [
+        "let",
+        "    Origen = (Parámetro5 as binary) => let",
+        "        Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (6)",
+      "lineageTag": "478084ae-aedb-42ff-a265-bd266e1ca095",
+      "queryGroupId": "e0784692-5c26-4ff3-bb83-0da3722cacf7",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"metadatos.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro6",
+      "lineageTag": "7ce941bb-d45b-4193-af1e-9eb369e3fbe5",
+      "queryGroupId": "e0784692-5c26-4ff3-bb83-0da3722cacf7",
+      "text": [
+        "#\"Archivo de ejemplo (6)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (6)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (6)",
+      "lineageTag": "06e056db-65d3-42f3-9f14-e2fa7b49d8a1",
+      "queryGroupId": "e0784692-5c26-4ff3-bb83-0da3722cacf7",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (6)",
+      "lineageTag": "9eb3ca52-9bc5-42c6-a4d1-20cc75bdc91f",
+      "queryGroupId": "e0784692-5c26-4ff3-bb83-0da3722cacf7",
+      "text": [
+        "let",
+        "    Origen = (Parámetro6 as binary) => let",
+        "        Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])",
+        "    in",
+        "        Origen",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (7)",
+      "lineageTag": "1d634a49-b608-4c2a-8b99-f6788283e392",
+      "queryGroupId": "d748edc6-24c7-45cb-9b20-e57f16215684",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"poblacion-upz-bogota.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro7",
+      "lineageTag": "430b6340-8f37-4da2-871a-b7c069a27d6a",
+      "queryGroupId": "d748edc6-24c7-45cb-9b20-e57f16215684",
+      "text": [
+        "#\"Archivo de ejemplo (7)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (7)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (7)",
+      "lineageTag": "8e7e358d-4ecd-4152-a039-82b01a4eeb96",
+      "queryGroupId": "ec6ba88c-3758-46d3-a282-8d646863a699",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (7)",
+      "lineageTag": "eda0dccb-f468-4d49-b7ae-c5ccbffb050b",
+      "queryGroupId": "d748edc6-24c7-45cb-9b20-e57f16215684",
+      "text": [
+        "let",
+        "    Origen = (Parámetro7 as binary) => let",
+        "        Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "UPZ2",
+      "lineageTag": "3cd97327-3d21-4e1a-bb68-dd870d7457ac",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (8)\", each #\"Transformar archivo (8)\"([Content])),",
+        "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
+        "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (8)\"}),",
+        "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (8)\", Table.ColumnNames(#\"Transformar archivo (8)\"(#\"Archivo de ejemplo (8)\"))),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Código UPZ\", Int64.Type}, {\"Nombre UPZ\", type text}, {\"Código localidad\", Int64.Type}, {\"Nombre localidad\", type text}, {\"Suma de Población urbana\", Int64.Type}, {\"Geo Point\", type text}, {\"Latitude\", type text}, {\"Longitude\", type text}}),",
+        "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"}),",
+        "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Columnas quitadas\",\"LA CANDELARIA\",\"CANDELARIA\",Replacer.ReplaceText,{\"Nombre localidad\"}),",
+        "    #\"Filas filtradas1\" = Table.SelectRows(#\"Valor reemplazado\", each true),",
+        "    #\"Personalizada agregada\" = Table.AddColumn(#\"Filas filtradas1\", \"Localidad\", each \"Colombia\" & \"-\" & [Nombre localidad]),",
+        "    Personalizado1 = #\"Personalizada agregada\",",
+        "    #\"Consulta anexada\" = Table.Combine({Personalizado1, NuevoRegistro}),",
+        "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Consulta anexada\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre UPZ\"}),",
+        "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre localidad\"}),",
+        "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Valor reemplazado2\",{{\"Nombre localidad\", Text.Proper, type text}, {\"Nombre UPZ\", Text.Proper, type text}, {\"Localidad\", Text.Proper, type text}})",
+        "in",
+        "    #\"Poner En Mayúsculas Cada Palabra\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = SharePoint.Files(\\\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\\\", [ApiVersion = 15]),\\r\\n    #\\\"Filas filtradas\\\" = Table.SelectRows(Origen, each ([Name] = \\\"latitud y longitud de upz Bogota.csv\\\")),\\r\\n    #\\\"Archivos ocultos filtrados1\\\" = Table.SelectRows(#\\\"Filas filtradas\\\", each [Attributes]?[Hidden]? <> true),\\r\\n    #\\\"Invocar función personalizada1\\\" = Table.AddColumn(#\\\"Archivos ocultos filtrados1\\\", \\\"Transformar archivo (8)\\\", each #\\\"Transformar archivo (8)\\\"([Content])),\\r\\n    #\\\"Columnas con nombre cambiado1\\\" = Table.RenameColumns(#\\\"Invocar función personalizada1\\\", {\\\"Name\\\", \\\"Source.Name\\\"}),\\r\\n    #\\\"Otras columnas quitadas1\\\" = Table.SelectColumns(#\\\"Columnas con nombre cambiado1\\\", {\\\"Source.Name\\\", \\\"Transformar archivo (8)\\\"}),\\r\\n    #\\\"Columna de tabla expandida1\\\" = Table.ExpandTableColumn(#\\\"Otras columnas quitadas1\\\", \\\"Transformar archivo (8)\\\", Table.ColumnNames(#\\\"Transformar archivo (8)\\\"(#\\\"Archivo de ejemplo (8)\\\"))),\\r\\n    #\\\"Tipo cambiado\\\" = Table.TransformColumnTypes(#\\\"Columna de tabla expandida1\\\",{{\\\"Source.Name\\\", type text}, {\\\"Código UPZ\\\", Int64.Type}, {\\\"Nombre UPZ\\\", type text}, {\\\"Código localidad\\\", Int64.Type}, {\\\"Nombre localidad\\\", type text}, {\\\"Suma de Población urbana\\\", Int64.Type}, {\\\"Geo Point\\\", type text}, {\\\"Latitude\\\", type text}, {\\\"Longitude\\\", type text}}),\\r\\n    #\\\"Columnas quitadas\\\" = Table.RemoveColumns(#\\\"Tipo cambiado\\\",{\\\"Source.Name\\\"}),\\r\\n    #\\\"Valor reemplazado\\\" = Table.ReplaceValue(#\\\"Columnas quitadas\\\",\\\"LA CANDELARIA\\\",\\\"CANDELARIA\\\",Replacer.ReplaceText,{\\\"Nombre localidad\\\"}),\\r\\n    #\\\"Filas filtradas1\\\" = Table.SelectRows(#\\\"Valor reemplazado\\\", each true),\\r\\n    #\\\"Personalizada agregada\\\" = Table.AddColumn(#\\\"Filas filtradas1\\\", \\\"Localidad\\\", each \\\"Colombia\\\" & \\\"-\\\" & [Nombre localidad]),\\r\\n    Personalizado1 = #\\\"Personalizada agregada\\\",\\r\\n    #\\\"Consulta anexada\\\" = Table.Combine({Personalizado1, NuevoRegistro}),\\r\\n    #\\\"Valor reemplazado1\\\" = Table.ReplaceValue(#\\\"Consulta anexada\\\",\\\"Sin_Registro\\\",\\\"SIN IDENTIFICAR\\\",Replacer.ReplaceText,{\\\"Nombre UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado2\\\" = Table.ReplaceValue(#\\\"Valor reemplazado1\\\",\\\"Sin_Registro\\\",\\\"SIN IDENTIFICAR\\\",Replacer.ReplaceText,{\\\"Nombre localidad\\\"}),\\r\\n    #\\\"Poner En Mayúsculas Cada Palabra\\\" = Table.TransformColumns(#\\\"Valor reemplazado2\\\",{{\\\"Nombre localidad\\\", Text.Proper, type text}, {\\\"Nombre UPZ\\\", Text.Proper, type text}, {\\\"Localidad\\\", Text.Proper, type text}})\\r\\nin\\r\\n    #\\\"Poner En Mayúsculas Cada Palabra\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (8)",
+      "lineageTag": "3a95ba66-356e-4a5a-9770-e5205dd288d8",
+      "queryGroupId": "db535b30-24e0-4965-8fdc-5be6b057dabb",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Exception",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro8",
+      "lineageTag": "ce093392-693a-4f9b-a418-07efa4f51e61",
+      "queryGroupId": "db535b30-24e0-4965-8fdc-5be6b057dabb",
+      "text": [
+        "#\"Archivo de ejemplo (8)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (8)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (8)",
+      "lineageTag": "5fc30a2b-871e-4212-b00f-662b1e68c06f",
+      "queryGroupId": "2e6adfae-a3bd-4e5c-a8fc-54732891de5f",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (8)",
+      "lineageTag": "cf66dd89-923c-4c23-959d-618d1353622b",
+      "queryGroupId": "db535b30-24e0-4965-8fdc-5be6b057dabb",
+      "text": [
+        "let",
+        "    Origen = (Parámetro8 as binary) => let",
+        "        Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Limpios",
+      "lineageTag": "3c0cf59c-1862-4dcf-be06-eac7de1d3d42",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),",
+        "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
+        "    #\"Archivos ocultos filtrados2\" = Table.SelectRows(#\"Columnas con nombre cambiado1\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada2\" = Table.AddColumn(#\"Archivos ocultos filtrados2\", \"Transformar archivo (10)\", each #\"Transformar archivo (10)\"([Content])),",
+        "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Invocar función personalizada2\", {\"Transformar archivo (10)\"}),",
+        "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (10)\", Table.ColumnNames(#\"Transformar archivo (10)\"(#\"Archivo de ejemplo (10)\"))),",
+        "    #\"Columna condicional agregada\" = Table.AddColumn(#\"Columna de tabla expandida1\", \"MES_NOMBRE\", each if [MES] = \"1\" then \"ENERO\" else if [MES] = \"2\" then \"FEBRERO\" else if [MES] = \"3\" then \"MARZO\" else if [MES] = \"4\" then \"ABRIL\" else if [MES] = \"5\" then \"MAYO\" else if [MES] = \"6\" then \"JUNIO\" else if [MES] = \"7\" then \"JULIO\" else if [MES] = \"8\" then \"AGOSTO\" else if [MES] = \"9\" then \"SEPTIEMBRE\" else if [MES] = \"10\" then \"OCTUBRE\" else if [MES] = \"11\" then \"NOVIEMBRE\" else if [MES] = \"12\" then \"DICIEMBRE\" else null),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna condicional agregada\",{{\"CANT_INCIDENTES\", Int64.Type}, {\"COD_UPZ\", Int64.Type}, {\"COD_LOCALIDAD\", Int64.Type}, {\"MES\", Int64.Type}}),",
+        "    #\"Personalizada agregada\" = Table.AddColumn(#\"Tipo cambiado\", \"Personalizado\", each Date.MonthName([MES]*29)),",
+        "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Personalizada agregada\",{\"MES_NOMBRE\"}),",
+        "    #\"Columnas con nombre cambiado\" = Table.RenameColumns(#\"Columnas quitadas\",{{\"Personalizado\", \"MES_Nombre\"}}),",
+        "    #\"Tipo cambiado1\" = Table.AddColumn(#\"Columnas con nombre cambiado\", \"MES_Fecha\", each Date.FromText(\"01 \" & [MES_Nombre] & [ANIO]), type date),",
+        "    #\"Errores quitados\" = Table.RemoveRowsWithErrors(#\"Tipo cambiado1\", {\"MES_Fecha\"}),",
+        "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Errores quitados\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Valor reemplazado\",991,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",992,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado3\" = Table.ReplaceValue(#\"Valor reemplazado2\",993,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado4\" = Table.ReplaceValue(#\"Valor reemplazado3\",995,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado5\" = Table.ReplaceValue(#\"Valor reemplazado4\",996,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado6\" = Table.ReplaceValue(#\"Valor reemplazado5\",997,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado7\" = Table.ReplaceValue(#\"Valor reemplazado6\",998,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado8\" = Table.ReplaceValue(#\"Valor reemplazado7\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Valor reemplazado9\" = Table.ReplaceValue(#\"Valor reemplazado8\",994,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
+        "    #\"Personalizada agregada1\" = Table.AddColumn(#\"Valor reemplazado9\", \"Personalizado\", each Date.QuarterOfYear([MES_Fecha])),",
+        "    #\"Tipo cambiado2\" = Table.TransformColumnTypes(#\"Personalizada agregada1\",{{\"Personalizado\", Int64.Type}}),",
+        "    #\"Columnas con nombre cambiado2\" = Table.RenameColumns(#\"Tipo cambiado2\",{{\"Personalizado\", \"Quarter\"}})",
+        "in",
+        "    #\"Columnas con nombre cambiado2\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = SharePoint.Files(\\\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\\\", [ApiVersion = 15]),\\r\\n    #\\\"Filas filtradas\\\" = Table.SelectRows(Origen, each ([Name] = \\\"dataset_limpieza_datos_llamadasC4.csv\\\")),\\r\\n    #\\\"Archivos ocultos filtrados1\\\" = Table.SelectRows(#\\\"Filas filtradas\\\", each [Attributes]?[Hidden]? <> true),\\r\\n    #\\\"Invocar función personalizada1\\\" = Table.AddColumn(#\\\"Archivos ocultos filtrados1\\\", \\\"Transformar archivo (9)\\\", each #\\\"Transformar archivo (9)\\\"([Content])),\\r\\n    #\\\"Columnas con nombre cambiado1\\\" = Table.RenameColumns(#\\\"Invocar función personalizada1\\\", {\\\"Name\\\", \\\"Source.Name\\\"}),\\r\\n    #\\\"Archivos ocultos filtrados2\\\" = Table.SelectRows(#\\\"Columnas con nombre cambiado1\\\", each [Attributes]?[Hidden]? <> true),\\r\\n    #\\\"Invocar función personalizada2\\\" = Table.AddColumn(#\\\"Archivos ocultos filtrados2\\\", \\\"Transformar archivo (10)\\\", each #\\\"Transformar archivo (10)\\\"([Content])),\\r\\n    #\\\"Otras columnas quitadas1\\\" = Table.SelectColumns(#\\\"Invocar función personalizada2\\\", {\\\"Transformar archivo (10)\\\"}),\\r\\n    #\\\"Columna de tabla expandida1\\\" = Table.ExpandTableColumn(#\\\"Otras columnas quitadas1\\\", \\\"Transformar archivo (10)\\\", Table.ColumnNames(#\\\"Transformar archivo (10)\\\"(#\\\"Archivo de ejemplo (10)\\\"))),\\r\\n    #\\\"Columna condicional agregada\\\" = Table.AddColumn(#\\\"Columna de tabla expandida1\\\", \\\"MES_NOMBRE\\\", each if [MES] = \\\"1\\\" then \\\"ENERO\\\" else if [MES] = \\\"2\\\" then \\\"FEBRERO\\\" else if [MES] = \\\"3\\\" then \\\"MARZO\\\" else if [MES] = \\\"4\\\" then \\\"ABRIL\\\" else if [MES] = \\\"5\\\" then \\\"MAYO\\\" else if [MES] = \\\"6\\\" then \\\"JUNIO\\\" else if [MES] = \\\"7\\\" then \\\"JULIO\\\" else if [MES] = \\\"8\\\" then \\\"AGOSTO\\\" else if [MES] = \\\"9\\\" then \\\"SEPTIEMBRE\\\" else if [MES] = \\\"10\\\" then \\\"OCTUBRE\\\" else if [MES] = \\\"11\\\" then \\\"NOVIEMBRE\\\" else if [MES] = \\\"12\\\" then \\\"DICIEMBRE\\\" else null),\\r\\n    #\\\"Tipo cambiado\\\" = Table.TransformColumnTypes(#\\\"Columna condicional agregada\\\",{{\\\"CANT_INCIDENTES\\\", Int64.Type}, {\\\"COD_UPZ\\\", Int64.Type}, {\\\"COD_LOCALIDAD\\\", Int64.Type}, {\\\"MES\\\", Int64.Type}}),\\r\\n    #\\\"Personalizada agregada\\\" = Table.AddColumn(#\\\"Tipo cambiado\\\", \\\"Personalizado\\\", each Date.MonthName([MES]*29)),\\r\\n    #\\\"Columnas quitadas\\\" = Table.RemoveColumns(#\\\"Personalizada agregada\\\",{\\\"MES_NOMBRE\\\"}),\\r\\n    #\\\"Columnas con nombre cambiado\\\" = Table.RenameColumns(#\\\"Columnas quitadas\\\",{{\\\"Personalizado\\\", \\\"MES_Nombre\\\"}}),\\r\\n    #\\\"Tipo cambiado1\\\" = Table.AddColumn(#\\\"Columnas con nombre cambiado\\\", \\\"MES_Fecha\\\", each Date.FromText(\\\"01 \\\" & [MES_Nombre] & [ANIO]), type date),\\r\\n    #\\\"Errores quitados\\\" = Table.RemoveRowsWithErrors(#\\\"Tipo cambiado1\\\", {\\\"MES_Fecha\\\"}),\\r\\n    #\\\"Valor reemplazado\\\" = Table.ReplaceValue(#\\\"Errores quitados\\\",990,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado1\\\" = Table.ReplaceValue(#\\\"Valor reemplazado\\\",991,990,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado2\\\" = Table.ReplaceValue(#\\\"Valor reemplazado1\\\",992,990,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado3\\\" = Table.ReplaceValue(#\\\"Valor reemplazado2\\\",993,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado4\\\" = Table.ReplaceValue(#\\\"Valor reemplazado3\\\",995,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado5\\\" = Table.ReplaceValue(#\\\"Valor reemplazado4\\\",996,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado6\\\" = Table.ReplaceValue(#\\\"Valor reemplazado5\\\",997,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado7\\\" = Table.ReplaceValue(#\\\"Valor reemplazado6\\\",998,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado8\\\" = Table.ReplaceValue(#\\\"Valor reemplazado7\\\",990,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Valor reemplazado9\\\" = Table.ReplaceValue(#\\\"Valor reemplazado8\\\",994,999,Replacer.ReplaceValue,{\\\"COD_UPZ\\\"}),\\r\\n    #\\\"Personalizada agregada1\\\" = Table.AddColumn(#\\\"Valor reemplazado9\\\", \\\"Personalizado\\\", each Date.QuarterOfYear([MES_Fecha])),\\r\\n    #\\\"Tipo cambiado2\\\" = Table.TransformColumnTypes(#\\\"Personalizada agregada1\\\",{{\\\"Personalizado\\\", Int64.Type}}),\\r\\n    #\\\"Columnas con nombre cambiado2\\\" = Table.RenameColumns(#\\\"Tipo cambiado2\\\",{{\\\"Personalizado\\\", \\\"Quarter\\\"}})\\r\\nin\\r\\n    #\\\"Columnas con nombre cambiado2\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Exception",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (9)",
+      "lineageTag": "e6d8441d-9d9b-46b8-8d63-914577bda4c3",
+      "queryGroupId": "2e979096-ca06-4c16-81db-e5988bac860f",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
+        "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro9",
+      "lineageTag": "2fc1cbef-ebad-4836-842f-75c4aad1375f",
+      "queryGroupId": "2e979096-ca06-4c16-81db-e5988bac860f",
+      "text": [
+        "#\"Archivo de ejemplo (9)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (9)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (9)",
+      "lineageTag": "82f38889-63a5-4620-a2fc-8dc8db997b52",
+      "queryGroupId": "421ea36f-6661-4319-82b4-de0e0d004728",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (9)",
+      "lineageTag": "ae469280-1e8e-4eae-ba70-04c3ec4198c7",
+      "queryGroupId": "2e979096-ca06-4c16-81db-e5988bac860f",
+      "text": [
+        "let",
+        "    Origen = (Parámetro9 as binary) => let",
+        "        Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Medidas",
+      "lineageTag": "328f596f-e562-4914-99f6-479a8f2352e4",
+      "text": [
+        "let",
+        "    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(Origen,{{\"Columna1\", type text}}),",
+        "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Columna1\"})",
+        "in",
+        "    #\"Columnas quitadas\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\\\"i44FAA==\\\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),\\r\\n    #\\\"Tipo cambiado\\\" = Table.TransformColumnTypes(Origen,{{\\\"Columna1\\\", type text}}),\\r\\n    #\\\"Columnas quitadas\\\" = Table.RemoveColumns(#\\\"Tipo cambiado\\\",{\\\"Columna1\\\"})\\r\\nin\\r\\n    #\\\"Columnas quitadas\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Archivo de ejemplo (10)",
+      "lineageTag": "7888734e-363b-4473-b4eb-15505740b8be",
+      "queryGroupId": "ef5b2ecb-a905-428a-89e6-4a0d0a558d25",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
+        "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
+        "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),",
+        "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
+        "    Navegación1 = #\"Columnas con nombre cambiado1\"{0}[Content]",
+        "in",
+        "    Navegación1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Exception",
+      "isHidden": false
+    },
+    {
+      "name": "Parámetro10",
+      "lineageTag": "dc422a1b-db31-4cbb-9dc1-3c256fa6c638",
+      "queryGroupId": "ef5b2ecb-a905-428a-89e6-4a0d0a558d25",
+      "text": [
+        "#\"Archivo de ejemplo (10)\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Archivo de ejemplo (10)\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo de ejemplo (10)",
+      "lineageTag": "d1057b08-68bb-4592-99c3-93d558b2018c",
+      "queryGroupId": "31830adf-b23f-42cd-a7b6-9ccb12959204",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Encabezados promovidos\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transformar archivo (10)",
+      "lineageTag": "293b7bca-1c05-4451-b8dc-9bbefe425ff6",
+      "queryGroupId": "ef5b2ecb-a905-428a-89e6-4a0d0a558d25",
+      "text": [
+        "let",
+        "    Origen = (Parámetro10 as binary) => let",
+        "        Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+        "        #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
+        "    in",
+        "        #\"Encabezados promovidos\"",
+        "in",
+        "    Origen"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "NuevoRegistro",
+      "lineageTag": "6bae3ed3-51ba-43e0-b932-d7c415d59d75",
+      "navigationStepName": "Navegación",
+      "text": [
+        "let",
+        "    Origen = let",
+        "    Source = Table.FromRecords({",
+        "        [Código UPZ=\"999\", Nombre UPZ=\"Sin_Registro\", Código localidad=\"999\",Nombre localidad= \"Sin_Registro\"]",
+        "    })",
+        "in",
+        "    Source",
+        "in",
+        "    Origen"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = let\\r\\n    Source = Table.FromRecords({\\r\\n        [Código UPZ=\\\"999\\\", Nombre UPZ=\\\"Sin_Registro\\\", Código localidad=\\\"999\\\",Nombre localidad= \\\"Sin_Registro\\\"]\\r\\n    })\\r\\nin\\r\\n    Source\\r\\nin\\r\\n    Origen\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Suma de CANT_INCIDENTES por Año y Trimestre",
+      "lineageTag": "f8b8a4ae-becb-4b00-9b9b-c653412d186d",
+      "text": [
+        "let",
+        "    Origen = Csv.Document(File.Contents(\"C:\\Users\\Administrador\\Desktop\\Suma de CANT_INCIDENTES por Año y Trimestre.csv\"),[Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),",
+        "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Año\", Int64.Type}, {\"Quarter\", type text}, {\"forecastValue\", Int64.Type}, {\"confidenceHighBound\", Int64.Type}, {\"confidenceLowBound\", Int64.Type}})",
+        "in",
+        "    #\"Tipo cambiado\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\r\\n    Origen = Csv.Document(File.Contents(\\\"C:\\\\Users\\\\Administrador\\\\Desktop\\\\Suma de CANT_INCIDENTES por Año y Trimestre.csv\\\"),[Delimiter=\\\",\\\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),\\r\\n    #\\\"Encabezados promovidos\\\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),\\r\\n    #\\\"Tipo cambiado\\\" = Table.TransformColumnTypes(#\\\"Encabezados promovidos\\\",{{\\\"Año\\\", Int64.Type}, {\\\"Quarter\\\", type text}, {\\\"forecastValue\\\", Int64.Type}, {\\\"confidenceHighBound\\\", Int64.Type}, {\\\"confidenceLowBound\\\", Int64.Type}})\\r\\nin\\r\\n    #\\\"Tipo cambiado\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    }
+  ],
+  "queryGroups": [
+    {
+      "name": "Transformar archivo de Consulta1",
+      "id": "a218dfe6-ad67-43ed-a93f-e5ed6c4e38ea",
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta1 (2)",
+      "id": "67dfa5dc-4024-4513-ae26-e6d854cffa5c",
+      "order": 2,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta2",
+      "id": "fb89f656-5946-4b70-ae28-b8cd9b22f1b2",
+      "order": 4,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta3",
+      "id": "859e584e-d2a3-4a91-a99a-a24e09079e39",
+      "order": 6,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta4",
+      "id": "bb0e33eb-14dc-43d0-a7be-d547e538b93d",
+      "order": 8,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta5",
+      "id": "39865799-b4f1-4b8d-97b8-c1e1df5036c0",
+      "order": 11,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta1 (3)",
+      "id": "ec6ba88c-3758-46d3-a282-8d646863a699",
+      "order": 12,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta1 (4)",
+      "id": "2e6adfae-a3bd-4e5c-a8fc-54732891de5f",
+      "order": 14,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Consulta1 (5)",
+      "id": "421ea36f-6661-4319-82b4-de0e0d004728",
+      "order": 16,
+      "description": ""
+    },
+    {
+      "name": "Transformar archivo de Limpios",
+      "id": "31830adf-b23f-42cd-a7b6-9ccb12959204",
+      "order": 18,
+      "description": ""
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "96539aca-06c3-40ac-9581-0ec45d8a0cd3",
+      "description": "",
+      "parentId": "a218dfe6-ad67-43ed-a93f-e5ed6c4e38ea"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "0841c52d-e68c-493c-98a3-e00cc3cc52ce",
+      "description": "",
+      "parentId": "67dfa5dc-4024-4513-ae26-e6d854cffa5c"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "6cf1fdc0-200a-4d8c-9062-746e17719880",
+      "description": "",
+      "parentId": "fb89f656-5946-4b70-ae28-b8cd9b22f1b2"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "5f940921-c794-4f9b-aae1-336d69f16e42",
+      "description": "",
+      "parentId": "859e584e-d2a3-4a91-a99a-a24e09079e39"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "dc0af7dc-8b7f-414c-a5f9-d133f9bcc4e9",
+      "description": "",
+      "parentId": "bb0e33eb-14dc-43d0-a7be-d547e538b93d"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "e0784692-5c26-4ff3-bb83-0da3722cacf7",
+      "description": "",
+      "parentId": "39865799-b4f1-4b8d-97b8-c1e1df5036c0"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "d748edc6-24c7-45cb-9b20-e57f16215684",
+      "description": "",
+      "parentId": "ec6ba88c-3758-46d3-a282-8d646863a699"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "db535b30-24e0-4965-8fdc-5be6b057dabb",
+      "description": "",
+      "parentId": "2e6adfae-a3bd-4e5c-a8fc-54732891de5f"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "2e979096-ca06-4c16-81db-e5988bac860f",
+      "description": "",
+      "parentId": "421ea36f-6661-4319-82b4-de0e0d004728"
+    },
+    {
+      "name": "Consultas auxiliares",
+      "id": "ef5b2ecb-a905-428a-89e6-4a0d0a558d25",
+      "description": "",
+      "parentId": "31830adf-b23f-42cd-a7b6-9ccb12959204"
+    }
+  ],
+  "culture": "es-MX",
+  "firewallEnabled": true
+}
