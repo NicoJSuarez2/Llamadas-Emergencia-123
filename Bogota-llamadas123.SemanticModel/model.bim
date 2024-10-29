@@ -3925,11 +3925,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),",
-          "    Navegación1 = #\"Se expandió Attributes\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),\r",
+          "    Navegación1 = #\"Se expandió Attributes\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -3958,9 +3958,9 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -3976,12 +3976,12 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro1 as binary) => let",
-          "    Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
-          "in",
-          "    Origen",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro1 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro1,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])\r",
+          "in\r",
+          "    Origen\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -3998,14 +3998,14 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),",
-          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Se expandió Attributes\", each [Attributes]?[Hidden]? <> true),",
-          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo\", each #\"Transformar archivo\"([Content])),",
-          "    #\"Filas filtradas\" = Table.SelectRows(#\"Invocar función personalizada1\", each ([Name] = \"definicioncampos.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Se expandió Attributes\" = Table.ExpandRecordColumn(Origen, \"Attributes\", {\"Size\", \"Content Type\", \"Kind\"}, {\"Attributes.Size\", \"Attributes.Content Type\", \"Attributes.Kind\"}),\r",
+          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Se expandió Attributes\", each [Attributes]?[Hidden]? <> true),\r",
+          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo\", each #\"Transformar archivo\"([Content])),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(#\"Invocar función personalizada1\", each ([Name] = \"definicioncampos.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4034,9 +4034,9 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4052,12 +4052,12 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro2 as binary) => let",
-          "    Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])",
-          "in",
-          "    Origen",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro2 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro2,[Delimiter=\";\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])\r",
+          "in\r",
+          "    Origen\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4074,11 +4074,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4107,9 +4107,9 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4125,12 +4125,12 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro3 as binary) => let",
-          "    Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])",
-          "in",
-          "    Origen",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro3 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro3,[Delimiter=\";\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.Csv])\r",
+          "in\r",
+          "    Origen\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4147,11 +4147,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4180,10 +4180,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4199,13 +4199,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro4 as binary) => let",
-          "    Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro4 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro4,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4226,11 +4226,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4259,10 +4259,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4278,13 +4278,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro5 as binary) => let",
-          "    Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro5 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro5,[Delimiter=\";\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4301,11 +4301,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"metadatos.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"metadatos.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4338,9 +4338,9 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4356,12 +4356,12 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro6 as binary) => let",
-          "    Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])",
-          "in",
-          "    Origen",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro6 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro6,[Delimiter=\";\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])\r",
+          "in\r",
+          "    Origen\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4382,17 +4382,17 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),",
-          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
-          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (4)\", each #\"Transformar archivo (4)\"([Content])),",
-          "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
-          "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (4)\"}),",
-          "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (4)\", Table.ColumnNames(#\"Transformar archivo (4)\"(#\"Archivo de ejemplo (4)\"))),",
-          "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"ID\", type text}, {\"ANIO\", Int64.Type}, {\"MES\", Int64.Type}, {\"TIPO_INCIDENTE\", type text}, {\"TIPO_DETALLE\", type text}, {\"COD_LOCALIDAD\", Int64.Type}, {\"LOCALIDAD\", type text}, {\"COD_UPZ\", type text}, {\"UPZ\", type text}, {\"CANT_INCIDENTES\", Int64.Type}}),",
-          "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"})",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"llamadastramitadas-c4-bogota_numerounicodeseguridadyemergencias-nuse_linea-123-a-31052024.csv\")),\r",
+          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),\r",
+          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (4)\", each #\"Transformar archivo (4)\"([Content])),\r",
+          "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),\r",
+          "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (4)\"}),\r",
+          "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (4)\", Table.ColumnNames(#\"Transformar archivo (4)\"(#\"Archivo de ejemplo (4)\"))),\r",
+          "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"ID\", type text}, {\"ANIO\", Int64.Type}, {\"MES\", Int64.Type}, {\"TIPO_INCIDENTE\", type text}, {\"TIPO_DETALLE\", type text}, {\"COD_LOCALIDAD\", Int64.Type}, {\"LOCALIDAD\", type text}, {\"COD_UPZ\", type text}, {\"UPZ\", type text}, {\"CANT_INCIDENTES\", Int64.Type}}),\r",
+          "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"})\r",
+          "in\r",
           "    #\"Columnas quitadas\""
         ],
         "kind": "m",
@@ -4407,11 +4407,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"poblacion-upz-bogota.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"poblacion-upz-bogota.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4440,10 +4440,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4459,13 +4459,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro7 as binary) => let",
-          "    Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro7 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro7,[Delimiter=\";\", Columns=9, Encoding=65001]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4482,11 +4482,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4515,10 +4515,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4534,13 +4534,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro8 as binary) => let",
-          "    Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro8 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro8,[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4557,11 +4557,11 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
-          "    Navegación1 = #\"Filas filtradas\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),\r",
+          "    Navegación1 = #\"Filas filtradas\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4590,10 +4590,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4609,13 +4609,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro9 as binary) => let",
-          "    Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro9 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro9,[Delimiter=\";\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -4636,14 +4636,14 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
-          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
-          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),",
-          "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
-          "    Navegación1 = #\"Columnas con nombre cambiado1\"{0}[Content]",
-          "in",
+          "let\r",
+          "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+          "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),\r",
+          "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),\r",
+          "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),\r",
+          "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),\r",
+          "    Navegación1 = #\"Columnas con nombre cambiado1\"{0}[Content]\r",
+          "in\r",
           "    Navegación1"
         ],
         "kind": "m",
@@ -4672,10 +4672,10 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
+          "let\r",
+          "    Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
           "    #\"Encabezados promovidos\""
         ],
         "kind": "m",
@@ -4691,13 +4691,13 @@
           }
         ],
         "expression": [
-          "let",
-          "    Origen = (Parámetro10 as binary) => let",
-          "    Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
-          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])",
-          "in",
-          "    #\"Encabezados promovidos\"",
-          "in",
+          "let\r",
+          "    Origen = (Parámetro10 as binary) => let\r",
+          "    Origen = Csv.Document(Parámetro10,[Delimiter=\";\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),\r",
+          "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true])\r",
+          "in\r",
+          "    #\"Encabezados promovidos\"\r",
+          "in\r",
           "    Origen"
         ],
         "kind": "m",
@@ -5202,20 +5202,20 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),",
-                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
-                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (3)\", each #\"Transformar archivo (3)\"([Content])),",
-                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
-                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (3)\"}),",
-                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (3)\", Table.ColumnNames(#\"Transformar archivo (3)\"(#\"Archivo de ejemplo (3)\"))),",
-                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}}),",
-                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(#\"Tipo cambiado\", [PromoteAllScalars=true]),",
-                "    #\"Tipo cambiado1\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"guiatipificacionincidentes.csv\", type text}, {\"COD_INCIDENTE\", type text}, {\"INCIDENTE\", type text}, {\"DEFINICION\", type text}}),",
-                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado1\",{\"guiatipificacionincidentes.csv\"}),",
-                "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Columnas quitadas\",{{\"INCIDENTE\", Text.Proper, type text}})",
-                "in",
+                "let\r",
+                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"guiatipificacionincidentes.csv\")),\r",
+                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),\r",
+                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (3)\", each #\"Transformar archivo (3)\"([Content])),\r",
+                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),\r",
+                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (3)\"}),\r",
+                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (3)\", Table.ColumnNames(#\"Transformar archivo (3)\"(#\"Archivo de ejemplo (3)\"))),\r",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}}),\r",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(#\"Tipo cambiado\", [PromoteAllScalars=true]),\r",
+                "    #\"Tipo cambiado1\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"guiatipificacionincidentes.csv\", type text}, {\"COD_INCIDENTE\", type text}, {\"INCIDENTE\", type text}, {\"DEFINICION\", type text}}),\r",
+                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado1\",{\"guiatipificacionincidentes.csv\"}),\r",
+                "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Columnas quitadas\",{{\"INCIDENTE\", Text.Proper, type text}})\r",
+                "in\r",
                 "    #\"Poner En Mayúsculas Cada Palabra\""
               ],
               "type": "m"
@@ -5364,25 +5364,25 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),",
-                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
-                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (8)\", each #\"Transformar archivo (8)\"([Content])),",
-                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
-                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (8)\"}),",
-                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (8)\", Table.ColumnNames(#\"Transformar archivo (8)\"(#\"Archivo de ejemplo (8)\"))),",
-                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Código UPZ\", Int64.Type}, {\"Nombre UPZ\", type text}, {\"Código localidad\", Int64.Type}, {\"Nombre localidad\", type text}, {\"Suma de Población urbana\", Int64.Type}, {\"Geo Point\", type text}, {\"Latitude\", type text}, {\"Longitude\", type text}}),",
-                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"}),",
-                "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Columnas quitadas\",\"LA CANDELARIA\",\"CANDELARIA\",Replacer.ReplaceText,{\"Nombre localidad\"}),",
-                "    #\"Filas filtradas1\" = Table.SelectRows(#\"Valor reemplazado\", each true),",
-                "    #\"Personalizada agregada\" = Table.AddColumn(#\"Filas filtradas1\", \"Localidad\", each \"Colombia\" & \"-\" & [Nombre localidad]),",
-                "    Personalizado1 = #\"Personalizada agregada\",",
-                "    #\"Consulta anexada\" = Table.Combine({Personalizado1, NuevoRegistro}),",
-                "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Consulta anexada\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre UPZ\"}),",
-                "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre localidad\"}),",
-                "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Valor reemplazado2\",{{\"Nombre localidad\", Text.Proper, type text}, {\"Nombre UPZ\", Text.Proper, type text}, {\"Localidad\", Text.Proper, type text}})",
-                "in",
+                "let\r",
+                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"latitud y longitud de upz Bogota.csv\")),\r",
+                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),\r",
+                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (8)\", each #\"Transformar archivo (8)\"([Content])),\r",
+                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),\r",
+                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Columnas con nombre cambiado1\", {\"Source.Name\", \"Transformar archivo (8)\"}),\r",
+                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (8)\", Table.ColumnNames(#\"Transformar archivo (8)\"(#\"Archivo de ejemplo (8)\"))),\r",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna de tabla expandida1\",{{\"Source.Name\", type text}, {\"Código UPZ\", Int64.Type}, {\"Nombre UPZ\", type text}, {\"Código localidad\", Int64.Type}, {\"Nombre localidad\", type text}, {\"Suma de Población urbana\", Int64.Type}, {\"Geo Point\", type text}, {\"Latitude\", type text}, {\"Longitude\", type text}}),\r",
+                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Source.Name\"}),\r",
+                "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Columnas quitadas\",\"LA CANDELARIA\",\"CANDELARIA\",Replacer.ReplaceText,{\"Nombre localidad\"}),\r",
+                "    #\"Filas filtradas1\" = Table.SelectRows(#\"Valor reemplazado\", each true),\r",
+                "    #\"Personalizada agregada\" = Table.AddColumn(#\"Filas filtradas1\", \"Localidad\", each \"Colombia\" & \"-\" & [Nombre localidad]),\r",
+                "    Personalizado1 = #\"Personalizada agregada\",\r",
+                "    #\"Consulta anexada\" = Table.Combine({Personalizado1, NuevoRegistro}),\r",
+                "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Consulta anexada\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre UPZ\"}),\r",
+                "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",\"Sin_Registro\",\"SIN IDENTIFICAR\",Replacer.ReplaceText,{\"Nombre localidad\"}),\r",
+                "    #\"Poner En Mayúsculas Cada Palabra\" = Table.TransformColumns(#\"Valor reemplazado2\",{{\"Nombre localidad\", Text.Proper, type text}, {\"Nombre UPZ\", Text.Proper, type text}, {\"Localidad\", Text.Proper, type text}})\r",
+                "in\r",
                 "    #\"Poner En Mayúsculas Cada Palabra\""
               ],
               "type": "m"
@@ -5568,37 +5568,37 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),",
-                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),",
-                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),",
-                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),",
-                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),",
-                "    #\"Archivos ocultos filtrados2\" = Table.SelectRows(#\"Columnas con nombre cambiado1\", each [Attributes]?[Hidden]? <> true),",
-                "    #\"Invocar función personalizada2\" = Table.AddColumn(#\"Archivos ocultos filtrados2\", \"Transformar archivo (10)\", each #\"Transformar archivo (10)\"([Content])),",
-                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Invocar función personalizada2\", {\"Transformar archivo (10)\"}),",
-                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (10)\", Table.ColumnNames(#\"Transformar archivo (10)\"(#\"Archivo de ejemplo (10)\"))),",
-                "    #\"Columna condicional agregada\" = Table.AddColumn(#\"Columna de tabla expandida1\", \"MES_NOMBRE\", each if [MES] = \"1\" then \"ENERO\" else if [MES] = \"2\" then \"FEBRERO\" else if [MES] = \"3\" then \"MARZO\" else if [MES] = \"4\" then \"ABRIL\" else if [MES] = \"5\" then \"MAYO\" else if [MES] = \"6\" then \"JUNIO\" else if [MES] = \"7\" then \"JULIO\" else if [MES] = \"8\" then \"AGOSTO\" else if [MES] = \"9\" then \"SEPTIEMBRE\" else if [MES] = \"10\" then \"OCTUBRE\" else if [MES] = \"11\" then \"NOVIEMBRE\" else if [MES] = \"12\" then \"DICIEMBRE\" else null),",
-                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna condicional agregada\",{{\"CANT_INCIDENTES\", Int64.Type}, {\"COD_UPZ\", Int64.Type}, {\"COD_LOCALIDAD\", Int64.Type}, {\"MES\", Int64.Type}}),",
-                "    #\"Personalizada agregada\" = Table.AddColumn(#\"Tipo cambiado\", \"Personalizado\", each Date.MonthName([MES]*29)),",
-                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Personalizada agregada\",{\"MES_NOMBRE\"}),",
-                "    #\"Columnas con nombre cambiado\" = Table.RenameColumns(#\"Columnas quitadas\",{{\"Personalizado\", \"MES_Nombre\"}}),",
-                "    #\"Tipo cambiado1\" = Table.AddColumn(#\"Columnas con nombre cambiado\", \"MES_Fecha\", each Date.FromText(\"01 \" & [MES_Nombre] & [ANIO]), type date),",
-                "    #\"Errores quitados\" = Table.RemoveRowsWithErrors(#\"Tipo cambiado1\", {\"MES_Fecha\"}),",
-                "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Errores quitados\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Valor reemplazado\",991,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",992,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado3\" = Table.ReplaceValue(#\"Valor reemplazado2\",993,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado4\" = Table.ReplaceValue(#\"Valor reemplazado3\",995,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado5\" = Table.ReplaceValue(#\"Valor reemplazado4\",996,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado6\" = Table.ReplaceValue(#\"Valor reemplazado5\",997,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado7\" = Table.ReplaceValue(#\"Valor reemplazado6\",998,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado8\" = Table.ReplaceValue(#\"Valor reemplazado7\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Valor reemplazado9\" = Table.ReplaceValue(#\"Valor reemplazado8\",994,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),",
-                "    #\"Personalizada agregada1\" = Table.AddColumn(#\"Valor reemplazado9\", \"Personalizado\", each Date.QuarterOfYear([MES_Fecha])),",
-                "    #\"Tipo cambiado2\" = Table.TransformColumnTypes(#\"Personalizada agregada1\",{{\"Personalizado\", Int64.Type}}),",
-                "    #\"Columnas con nombre cambiado2\" = Table.RenameColumns(#\"Tipo cambiado2\",{{\"Personalizado\", \"Quarter\"}})",
-                "in",
+                "let\r",
+                "    Origen = SharePoint.Files(\"https://poligran.sharepoint.com/sites/ENTREGA_FINAL\", [ApiVersion = 15]),\r",
+                "    #\"Filas filtradas\" = Table.SelectRows(Origen, each ([Name] = \"dataset_limpieza_datos_llamadasC4.csv\")),\r",
+                "    #\"Archivos ocultos filtrados1\" = Table.SelectRows(#\"Filas filtradas\", each [Attributes]?[Hidden]? <> true),\r",
+                "    #\"Invocar función personalizada1\" = Table.AddColumn(#\"Archivos ocultos filtrados1\", \"Transformar archivo (9)\", each #\"Transformar archivo (9)\"([Content])),\r",
+                "    #\"Columnas con nombre cambiado1\" = Table.RenameColumns(#\"Invocar función personalizada1\", {\"Name\", \"Source.Name\"}),\r",
+                "    #\"Archivos ocultos filtrados2\" = Table.SelectRows(#\"Columnas con nombre cambiado1\", each [Attributes]?[Hidden]? <> true),\r",
+                "    #\"Invocar función personalizada2\" = Table.AddColumn(#\"Archivos ocultos filtrados2\", \"Transformar archivo (10)\", each #\"Transformar archivo (10)\"([Content])),\r",
+                "    #\"Otras columnas quitadas1\" = Table.SelectColumns(#\"Invocar función personalizada2\", {\"Transformar archivo (10)\"}),\r",
+                "    #\"Columna de tabla expandida1\" = Table.ExpandTableColumn(#\"Otras columnas quitadas1\", \"Transformar archivo (10)\", Table.ColumnNames(#\"Transformar archivo (10)\"(#\"Archivo de ejemplo (10)\"))),\r",
+                "    #\"Columna condicional agregada\" = Table.AddColumn(#\"Columna de tabla expandida1\", \"MES_NOMBRE\", each if [MES] = \"1\" then \"ENERO\" else if [MES] = \"2\" then \"FEBRERO\" else if [MES] = \"3\" then \"MARZO\" else if [MES] = \"4\" then \"ABRIL\" else if [MES] = \"5\" then \"MAYO\" else if [MES] = \"6\" then \"JUNIO\" else if [MES] = \"7\" then \"JULIO\" else if [MES] = \"8\" then \"AGOSTO\" else if [MES] = \"9\" then \"SEPTIEMBRE\" else if [MES] = \"10\" then \"OCTUBRE\" else if [MES] = \"11\" then \"NOVIEMBRE\" else if [MES] = \"12\" then \"DICIEMBRE\" else null),\r",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Columna condicional agregada\",{{\"CANT_INCIDENTES\", Int64.Type}, {\"COD_UPZ\", Int64.Type}, {\"COD_LOCALIDAD\", Int64.Type}, {\"MES\", Int64.Type}}),\r",
+                "    #\"Personalizada agregada\" = Table.AddColumn(#\"Tipo cambiado\", \"Personalizado\", each Date.MonthName([MES]*29)),\r",
+                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Personalizada agregada\",{\"MES_NOMBRE\"}),\r",
+                "    #\"Columnas con nombre cambiado\" = Table.RenameColumns(#\"Columnas quitadas\",{{\"Personalizado\", \"MES_Nombre\"}}),\r",
+                "    #\"Tipo cambiado1\" = Table.AddColumn(#\"Columnas con nombre cambiado\", \"MES_Fecha\", each Date.FromText(\"01 \" & [MES_Nombre] & [ANIO]), type date),\r",
+                "    #\"Errores quitados\" = Table.RemoveRowsWithErrors(#\"Tipo cambiado1\", {\"MES_Fecha\"}),\r",
+                "    #\"Valor reemplazado\" = Table.ReplaceValue(#\"Errores quitados\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado1\" = Table.ReplaceValue(#\"Valor reemplazado\",991,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado2\" = Table.ReplaceValue(#\"Valor reemplazado1\",992,990,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado3\" = Table.ReplaceValue(#\"Valor reemplazado2\",993,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado4\" = Table.ReplaceValue(#\"Valor reemplazado3\",995,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado5\" = Table.ReplaceValue(#\"Valor reemplazado4\",996,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado6\" = Table.ReplaceValue(#\"Valor reemplazado5\",997,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado7\" = Table.ReplaceValue(#\"Valor reemplazado6\",998,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado8\" = Table.ReplaceValue(#\"Valor reemplazado7\",990,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Valor reemplazado9\" = Table.ReplaceValue(#\"Valor reemplazado8\",994,999,Replacer.ReplaceValue,{\"COD_UPZ\"}),\r",
+                "    #\"Personalizada agregada1\" = Table.AddColumn(#\"Valor reemplazado9\", \"Personalizado\", each Date.QuarterOfYear([MES_Fecha])),\r",
+                "    #\"Tipo cambiado2\" = Table.TransformColumnTypes(#\"Personalizada agregada1\",{{\"Personalizado\", Int64.Type}}),\r",
+                "    #\"Columnas con nombre cambiado2\" = Table.RenameColumns(#\"Tipo cambiado2\",{{\"Personalizado\", \"Quarter\"}})\r",
+                "in\r",
                 "    #\"Columnas con nombre cambiado2\""
               ],
               "type": "m"
@@ -5631,9 +5631,9 @@
           {
             "name": "M_Conteo_Duplicados",
             "expression": [
-              "",
-              "VAR TotalFilas = COUNTROWS(Limpios)",
-              "VAR Unicos = COUNTROWS(SUMMARIZE(Limpios, Limpios[ID]))",
+              "\r",
+              "VAR TotalFilas = COUNTROWS(Limpios)\r",
+              "VAR Unicos = COUNTROWS(SUMMARIZE(Limpios, Limpios[ID]))\r",
               "RETURN TotalFilas - Unicos"
             ],
             "formatString": "0",
@@ -5654,20 +5654,20 @@
           {
             "name": "M_mes_max",
             "expression": [
-              "",
-              "VAR tbl = SUMMARIZE(",
-              "    ALLSELECTED(Limpios), ",
-              "    Limpios[MES_Nombre], ",
-              "    \"TotalLlamadas\", [M_Total_Incidentes]",
-              ")",
-              "VAR MaxLlamadas = MAXX(tbl, [TotalLlamadas])",
-              "RETURN",
-              "CALCULATE(",
-              "    MAX(Limpios[MES_Nombre]),",
-              "    FILTER(",
-              "        tbl,",
-              "        [TotalLlamadas] = MaxLlamadas",
-              "    )",
+              "\r",
+              "VAR tbl = SUMMARIZE(\r",
+              "    ALLSELECTED(Limpios), \r",
+              "    Limpios[MES_Nombre], \r",
+              "    \"TotalLlamadas\", [M_Total_Incidentes]\r",
+              ")\r",
+              "VAR MaxLlamadas = MAXX(tbl, [TotalLlamadas])\r",
+              "RETURN\r",
+              "CALCULATE(\r",
+              "    MAX(Limpios[MES_Nombre]),\r",
+              "    FILTER(\r",
+              "        tbl,\r",
+              "        [TotalLlamadas] = MaxLlamadas\r",
+              "    )\r",
               ")"
             ],
             "lineageTag": "52cece58-1e3e-405c-ad7d-8cb661a144bc"
@@ -5675,16 +5675,16 @@
           {
             "name": "M_Total_MesIncidentes",
             "expression": [
-              "",
-              "VAR MaxMes = [M_mes_max]",
-              "RETURN",
-              "CALCULATE(",
-              "    [M_Total_Incidentes](",
-              "        FILTER(",
-              "            ALLSELECTED(Limpios),",
-              "            Limpios[MES_Nombre] = MaxMes",
-              "        )",
-              "    )",
+              "\r",
+              "VAR MaxMes = [M_mes_max]\r",
+              "RETURN\r",
+              "CALCULATE(\r",
+              "    [M_Total_Incidentes](\r",
+              "        FILTER(\r",
+              "            ALLSELECTED(Limpios),\r",
+              "            Limpios[MES_Nombre] = MaxMes\r",
+              "        )\r",
+              "    )\r",
               ")"
             ],
             "formatString": "#,0",
@@ -5711,11 +5711,11 @@
               }
             ],
             "expression": [
-              "",
-              "VAR TotalLlamadas = SUM(Limpios[CANT_INCIDENTES])",
-              "VAR Total_localidades = COUNTROWS(ALL(Limpios[COD_LOCALIDAD]))",
-              "VAR TotalLlamadas_Localidad = CALCULATE([M_Total_Incidentes], ALL(Limpios[COD_LOCALIDAD]))",
-              "RETURN ",
+              "\r",
+              "VAR TotalLlamadas = SUM(Limpios[CANT_INCIDENTES])\r",
+              "VAR Total_localidades = COUNTROWS(ALL(Limpios[COD_LOCALIDAD]))\r",
+              "VAR TotalLlamadas_Localidad = CALCULATE([M_Total_Incidentes], ALL(Limpios[COD_LOCALIDAD]))\r",
+              "RETURN \r",
               "(TotalLlamadas - TotalLlamadas_Localidad) / (Total_localidades - 1)"
             ],
             "lineageTag": "7d24f422-4f0f-4350-a69a-29dd8a0b3d89"
@@ -5729,7 +5729,7 @@
           {
             "name": "M_PorcentajeIncidentesLocalidad",
             "expression": [
-              "",
+              "\r",
               "DIVIDE([M_Total_Incidentes], [M_SumaTotalIncidentes], 0) "
             ],
             "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
@@ -5738,7 +5738,7 @@
           {
             "name": "M_ConteoPorTotal",
             "expression": [
-              "COUNTROWS('Limpios')",
+              "COUNTROWS('Limpios')\r",
               ""
             ],
             "formatString": "0",
@@ -5747,17 +5747,17 @@
           {
             "name": "M_ForecastedValue",
             "expression": [
-              "",
-              "VAR Last_Date = MAX(Limpios[MES_Fecha])",
-              "VAR Next_Month = EOMONTH(Last_Date, 1) + 2",
-              "RETURN",
-              "CALCULATE(",
-              "    SUM(Limpios[Cant_incidentes]), ",
-              "    FILTER(",
-              "        ALL(Limpios), ",
-              "        Limpios[MES_Fecha] = Next_Month",
-              "    )",
-              ")",
+              "\r",
+              "VAR Last_Date = MAX(Limpios[MES_Fecha])\r",
+              "VAR Next_Month = EOMONTH(Last_Date, 1) + 2\r",
+              "RETURN\r",
+              "CALCULATE(\r",
+              "    SUM(Limpios[Cant_incidentes]), \r",
+              "    FILTER(\r",
+              "        ALL(Limpios), \r",
+              "        Limpios[MES_Fecha] = Next_Month\r",
+              "    )\r",
+              ")\r",
               ""
             ],
             "formatString": "0",
@@ -5776,22 +5776,22 @@
           {
             "name": "M_UPZ_con_mas_incidentes",
             "expression": [
-              "",
-              "VAR Max_Incidentes = MAXX(ALL('UPZ2'[Nombre UPZ]), [M_Total_Incidentes])",
-              "VAR Localidad_Seleccionada = [M_Localidad Seleccionada]",
-              "RETURN",
-              "    IF(",
-              "        ISBLANK(Localidad_Seleccionada),",
-              "        SELECTCOLUMNS(",
-              "            FILTER('UPZ2', [M_Total_Incidentes] = Max_Incidentes),",
-              "            \"UPZ\", 'UPZ2'[Nombre UPZ]",
-              "        ),",
-              "        SELECTCOLUMNS(",
-              "            FILTER('UPZ2', [M_Total_Incidentes] = Max_Incidentes && 'UPZ2'[Nombre localidad] = Localidad_Seleccionada),",
-              "            \"UPZ\", 'UPZ2'[Nombre UPZ]",
-              "        )",
-              "    )",
-              "",
+              "\r",
+              "VAR Max_Incidentes = MAXX(ALL('UPZ2'[Nombre UPZ]), [M_Total_Incidentes])\r",
+              "VAR Localidad_Seleccionada = [M_Localidad Seleccionada]\r",
+              "RETURN\r",
+              "    IF(\r",
+              "        ISBLANK(Localidad_Seleccionada),\r",
+              "        SELECTCOLUMNS(\r",
+              "            FILTER('UPZ2', [M_Total_Incidentes] = Max_Incidentes),\r",
+              "            \"UPZ\", 'UPZ2'[Nombre UPZ]\r",
+              "        ),\r",
+              "        SELECTCOLUMNS(\r",
+              "            FILTER('UPZ2', [M_Total_Incidentes] = Max_Incidentes && 'UPZ2'[Nombre localidad] = Localidad_Seleccionada),\r",
+              "            \"UPZ\", 'UPZ2'[Nombre UPZ]\r",
+              "        )\r",
+              "    )\r",
+              "\r",
               ""
             ],
             "lineageTag": "13948067-e0e1-4830-ab0a-fa3e75f51ece"
@@ -5808,11 +5808,11 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),",
-                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(Origen,{{\"Columna1\", type text}}),",
-                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Columna1\"})",
-                "in",
+                "let\r",
+                "    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),\r",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(Origen,{{\"Columna1\", type text}}),\r",
+                "    #\"Columnas quitadas\" = Table.RemoveColumns(#\"Tipo cambiado\",{\"Columna1\"})\r",
+                "in\r",
                 "    #\"Columnas quitadas\""
               ],
               "type": "m"
@@ -6094,14 +6094,14 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = let",
-                "    Source = Table.FromRecords({",
-                "        [Código UPZ=\"999\", Nombre UPZ=\"Sin_Registro\", Código localidad=\"999\",Nombre localidad= \"Sin_Registro\"]",
-                "    })",
-                "in",
-                "    Source",
-                "in",
+                "let\r",
+                "    Origen = let\r",
+                "    Source = Table.FromRecords({\r",
+                "        [Código UPZ=\"999\", Nombre UPZ=\"Sin_Registro\", Código localidad=\"999\",Nombre localidad= \"Sin_Registro\"]\r",
+                "    })\r",
+                "in\r",
+                "    Source\r",
+                "in\r",
                 "    Origen"
               ],
               "type": "m"
@@ -6210,11 +6210,11 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let",
-                "    Origen = Csv.Document(File.Contents(\"C:\\Users\\Administrador\\Desktop\\Suma de CANT_INCIDENTES por Año y Trimestre.csv\"),[Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
-                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),",
-                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Año\", Int64.Type}, {\"Quarter\", type text}, {\"forecastValue\", Int64.Type}, {\"confidenceHighBound\", Int64.Type}, {\"confidenceLowBound\", Int64.Type}})",
-                "in",
+                "let\r",
+                "    Origen = Csv.Document(File.Contents(\"C:\\Users\\Administrador\\Desktop\\Suma de CANT_INCIDENTES por Año y Trimestre.csv\"),[Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),\r",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),\r",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Año\", Int64.Type}, {\"Quarter\", type text}, {\"forecastValue\", Int64.Type}, {\"confidenceHighBound\", Int64.Type}, {\"confidenceLowBound\", Int64.Type}})\r",
+                "in\r",
                 "    #\"Tipo cambiado\""
               ],
               "type": "m"
